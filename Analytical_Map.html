@@ -82,6 +82,8 @@
   .header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--rule); padding-bottom: 22px; margin-bottom: 32px; }
   .h-left .title { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 60; font-size: 52px; font-weight: 380; letter-spacing: -0.025em; line-height: 0.95; font-style: italic; color: var(--ink); }
   .h-left .subtitle { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink-faded); margin-top: 10px; }
+  .back-home { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-faded); text-decoration: none; border: 1px solid var(--rule); padding: 5px 12px; transition: color .15s, border-color .15s; display: inline-block; }
+  .back-home:hover { color: var(--ink); border-color: var(--ink); }
   .h-right { display: flex; align-items: flex-end; gap: 18px; }
   .h-right-text { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--ink-soft); text-align: right; line-height: 1.4; max-width: 240px; }
   .theme-toggle {
@@ -626,6 +628,7 @@ function buildHeader() {
   return ''
     + '<header class="header">'
     +   '<div class="h-left">'
+    +     '<a class="back-home" href="index.html">← Home</a>'
     +     '<div class="title">The Analytical Map</div>'
     +     '<div class="subtitle">A Socratic brainstorming instrument</div>'
     +   '</div>'
@@ -1267,6 +1270,7 @@ function render() {
     +   buildPromptSection()
     +   '<div class="main-grid">' + buildMapPanel() + buildOutlinePanel() + '</div>'
     +   '<div class="colophon">— questions, not answers —</div>'
+    +   '<div style="text-align:center; margin-top: 24px;"><a class="back-home" href="index.html">← Home</a></div>'
     + '</div>';
 
   $('app').innerHTML = html;
