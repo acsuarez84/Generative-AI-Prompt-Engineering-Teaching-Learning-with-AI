@@ -1,545 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A. C. Suarez — AI &amp; Writing Pedagogy Projects</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <title>A. C. Suarez &mdash; AI &amp; Writing Pedagogy</title>
+    <meta name="author" content="A. C. Suarez" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px 2in;
+            line-height: 1.6;
+            color: #333333;
+            overflow-x: hidden;
+        }
 
-  :root {
-    --bg:         #ffffff;
-    --bg-deep:    #f5f5f5;
-    --paper:      #ffffff;
-    --ink:        #000000;
-    --ink-soft:   #2a2a2a;
-    --ink-faded:  #6a6a6a;
-    --rule:       #cccccc;
-    --rule-soft:  #e5e5e5;
+        h3 {
+            color: #222222;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 4px;
+            margin-top: 24px;
+        }
 
-    --c-issue:  #7a1f1f;
-    --c-time:   #2d4a3e;
-    --c-lang:   #ad7a1a;
-    --c-rhet:   #2a3a6b;
-    --c-author: #a8542f;
-    --c-genre:  #5d3a5f;
+        a {
+            color: #333333;
+            text-decoration: underline;
+        }
 
-    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --font-body:    'Newsreader', Georgia, 'Times New Roman', serif;
-    --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  }
+        a:hover {
+            color: #000000;
+        }
 
-  [data-theme="dark"] {
-    --bg:        #000000;
-    --bg-deep:   #0a0a0a;
-    --paper:     #111111;
-    --ink:       #ffffff;
-    --ink-soft:  #d5d5d5;
-    --ink-faded: #959595;
-    --rule:      #333333;
-    --rule-soft: #1a1a1a;
+        ul {
+            margin-top: 8px;
+        }
 
-    --c-issue:  #e85c5c;
-    --c-time:   #6db896;
-    --c-lang:   #e8a93a;
-    --c-rhet:   #7a9ce0;
-    --c-author: #e8884a;
-    --c-genre:  #b08bb8;
-  }
+        ul li {
+            margin-bottom: 4px;
+        }
 
-  html { scroll-behavior: smooth; }
+        .header-banner {
+            background-color: #dddddd;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            margin: -20px -2in 0 -2in;
+        }
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 18px;
-    line-height: 1.7;
-    transition: background .2s, color .2s;
-  }
+        .header-banner h3 {
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+            font-style: italic;
+        }
 
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .75rem 2rem;
-  }
+        .project-desc {
+            margin: 4px 0 0 0;
+            font-size: 0.95em;
+            color: #555555;
+        }
 
-  .nav-brand {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -.01em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    font-family: var(--font-mono);
-    font-size: .75rem;
-    color: var(--ink-faded);
-    text-decoration: none;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    transition: color .15s;
-  }
-
-  .nav-links a:hover { color: var(--ink); }
-
-  #theme-btn {
-    background: none;
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    color: var(--ink-faded);
-    font-family: var(--font-mono);
-    font-size: .7rem;
-    padding: .3rem .6rem;
-    cursor: pointer;
-    transition: border-color .15s, color .15s;
-  }
-  #theme-btn:hover { border-color: var(--ink); color: var(--ink); }
-
-  /* ── HERO ── */
-  .hero {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-  }
-
-  .hero-eyebrow {
-    font-family: var(--font-mono);
-    font-size: .75rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink-faded);
-    margin-bottom: 1.25rem;
-  }
-
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -.02em;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--c-rhet);
-  }
-
-  .hero p {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-  }
-
-  .hero-rule {
-    width: 48px;
-    height: 2px;
-    background: var(--rule);
-    margin: 0 auto;
-  }
-
-  /* ── SECTION ── */
-  section {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: .7rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-faded);
-    border-bottom: 1px solid var(--rule-soft);
-    padding-bottom: .5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  /* ── PROJECT CARDS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .card {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transition: border-color .2s, box-shadow .2s;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .card:hover {
-    border-color: var(--ink-faded);
-    box-shadow: 0 4px 20px rgba(0,0,0,.07);
-  }
-
-  [data-theme="dark"] .card:hover {
-    box-shadow: 0 4px 20px rgba(255,255,255,.04);
-  }
-
-  .card-tag {
-    font-family: var(--font-mono);
-    font-size: .65rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    padding: .2rem .55rem;
-    border-radius: 3px;
-    display: inline-block;
-    width: fit-content;
-  }
-
-  .tag-tool    { background: color-mix(in srgb, var(--c-rhet) 12%, transparent); color: var(--c-rhet); }
-  .tag-resource{ background: color-mix(in srgb, var(--c-time) 12%, transparent); color: var(--c-time); }
-  .tag-code    { background: color-mix(in srgb, var(--c-lang) 12%, transparent); color: var(--c-lang); }
-  .tag-pdf     { background: color-mix(in srgb, var(--c-author) 12%, transparent); color: var(--c-author); }
-
-  .card h2 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -.01em;
-    color: var(--ink);
-  }
-
-  .card p {
-    font-size: .95rem;
-    color: var(--ink-soft);
-    flex: 1;
-  }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: .5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule-soft);
-  }
-
-  .card-link-label {
-    font-family: var(--font-mono);
-    font-size: .72rem;
-    color: var(--ink-faded);
-    letter-spacing: .06em;
-    text-transform: uppercase;
-  }
-
-  .card-arrow {
-    font-size: 1rem;
-    color: var(--ink-faded);
-    transition: transform .2s, color .2s;
-  }
-
-  .card:hover .card-arrow {
-    transform: translateX(4px);
-    color: var(--ink);
-  }
-
-  /* ── ACCENT STRIP ── */
-  .accent-strip {
-    display: flex;
-    height: 3px;
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 1.25rem;
-  }
-
-  .accent-strip span {
-    flex: 1;
-  }
-
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  @media (max-width: 680px) {
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  }
-
-  .about-text h2 {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -.01em;
-    margin-bottom: .75rem;
-  }
-
-  .about-text p {
-    color: var(--ink-soft);
-    margin-bottom: 1rem;
-    font-size: .97rem;
-  }
-
-  .lens-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-  }
-
-  .lens-item {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    font-size: .9rem;
-    color: var(--ink-soft);
-  }
-
-  .lens-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .lens-name {
-    font-family: var(--font-mono);
-    font-size: .75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    min-width: 60px;
-  }
-
-  /* ── CALLOUT ── */
-  .callout {
-    background: var(--bg-deep);
-    border: 1px solid var(--rule-soft);
-    border-left: 3px solid var(--c-genre);
-    border-radius: 4px;
-    padding: 1.25rem 1.5rem;
-    font-size: .92rem;
-    color: var(--ink-soft);
-  }
-
-  .callout strong { color: var(--ink); }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--rule);
-    padding: 2rem;
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: .7rem;
-    color: var(--ink-faded);
-    letter-spacing: .06em;
-  }
-
-  footer a {
-    color: var(--ink-faded);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule);
-    transition: color .15s, border-color .15s;
-  }
-
-  footer a:hover { color: var(--ink); border-color: var(--ink); }
-
-  @media (max-width: 600px) {
-    nav { padding: .75rem 1rem; }
-    .nav-links { gap: .75rem; }
-    section { padding: 3rem 1rem; }
-    .hero { padding: 4rem 1rem 3rem; }
-  }
-</style>
+        @media (max-width: 700px) {
+            body { padding: 20px 1rem; }
+            .header-banner { margin: -20px -1rem 0 -1rem; }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#">A. C. Suarez</a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" target="_blank" rel="noopener">GitHub</a></li>
-    <li><button id="theme-btn" aria-label="Toggle theme">dark</button></li>
-  </ul>
-</nav>
+<div class="header-banner">
+    <h3>A. C. Suarez &mdash; AI &amp; Writing Pedagogy</h3>
+</div>
 
-<!-- HERO -->
-<header class="hero">
-  <p class="hero-eyebrow">Open Educational Resource</p>
-  <h1>Generative AI &amp; <em>Writing Pedagogy</em></h1>
-  <p>Prompt-engineering tools and curriculum resources for multilingual learners, writing instructors, and curriculum designers who want to use AI thoughtfully in the classroom.</p>
-  <div class="hero-rule"></div>
-</header>
+<br>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label">Projects</p>
+<h3>Welcome</h3>
+<p>This site is a collection of projects by <strong>A. C. Suarez</strong> focused on
+generative AI, prompt engineering, and writing pedagogy. These resources are designed
+for multilingual learners, writing instructors, and curriculum designers who want to
+use AI thoughtfully in educational contexts.</p>
 
-  <div class="projects-grid">
+<h3>Projects</h3>
+<ul>
+    <li>
+        <a href="index.html">The Analytical Map</a>
+        <p class="project-desc">An interactive Socratic brainstorming tool that guides writers through six analytical
+        lenses &mdash; Issue, Time, Language, Rhetoric, Author, and Genre &mdash; to deepen engagement
+        with any academic text before forming an argument.</p>
+    </li>
+    <li>
+        <a href="home.html">AI &amp; Writing Pedagogy Hub</a>
+        <p class="project-desc">A resource portal covering the philosophy behind these tools, pedagogical rationale,
+        and guidance for writing instructors and curriculum designers integrating AI into their practice.</p>
+    </li>
+    <li>
+        <a href="code-viewer.html">Source Code Viewer</a>
+        <p class="project-desc">A syntax-highlighted browser for exploring the HTML, CSS, and JavaScript behind
+        The Analytical Map &mdash; for educators who want to understand, adapt, or remix the tool.</p>
+    </li>
+    <li>
+        <a href="UCF_AI_Presentation.pdf" target="_blank">UCF AI Presentation (PDF)</a>
+        <p class="project-desc">A slide deck developed for the University of Central Florida covering generative AI
+        in teaching and learning, prompt-engineering strategies, classroom applications, and ethical considerations.</p>
+    </li>
+</ul>
 
-    <!-- The Analytical Map -->
-    <a class="card" href="index.html">
-      <div class="accent-strip">
-        <span style="background:var(--c-issue)"></span>
-        <span style="background:var(--c-time)"></span>
-        <span style="background:var(--c-lang)"></span>
-        <span style="background:var(--c-rhet)"></span>
-        <span style="background:var(--c-author)"></span>
-        <span style="background:var(--c-genre)"></span>
-      </div>
-      <span class="card-tag tag-tool">Interactive Tool</span>
-      <h2>The Analytical Map</h2>
-      <p>A Socratic brainstorming tool that walks writers through six analytical lenses — Issue, Time, Language, Rhetoric, Author, and Genre — to deepen engagement with any academic text before forming an argument.</p>
-      <div class="card-footer">
-        <span class="card-link-label">Open tool</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
+<h3>About</h3>
+<p>These tools address a core challenge in writing pedagogy: helping multilingual writers engage more deeply
+with academic texts through guided Socratic reasoning rather than surface-level summarising. Rather than asking
+AI to generate answers, students learn to use AI as a structured thinking partner &mdash; working through a
+text systematically before forming their own arguments.</p>
 
-    <!-- Resource Portal -->
-    <a class="card" href="home.html">
-      <div class="accent-strip">
-        <span style="background:var(--c-time)"></span>
-        <span style="background:var(--c-genre)"></span>
-      </div>
-      <span class="card-tag tag-resource">Resource Portal</span>
-      <h2>AI &amp; Writing Pedagogy Hub</h2>
-      <p>A documentation and resource portal covering the philosophy behind these tools, pedagogical rationale, and guidance for writing instructors and curriculum designers integrating AI into their practice.</p>
-      <div class="card-footer">
-        <span class="card-link-label">Open hub</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
+<p>All resources run entirely in the browser with no login, no data collection, and no server required.
+They are freely available to use, fork, and adapt.</p>
 
-    <!-- Source Code Viewer -->
-    <a class="card" href="code-viewer.html">
-      <div class="accent-strip">
-        <span style="background:var(--c-lang)"></span>
-        <span style="background:var(--c-author)"></span>
-      </div>
-      <span class="card-tag tag-code">Source Code</span>
-      <h2>Code Viewer</h2>
-      <p>A GitHub-style syntax-highlighted browser for exploring the HTML, CSS, and JavaScript behind The Analytical Map. Designed for educators who want to understand, adapt, or remix the tool for their own context.</p>
-      <div class="card-footer">
-        <span class="card-link-label">Browse code</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
+<br>
 
-    <!-- UCF Presentation -->
-    <a class="card" href="UCF_AI_Presentation.pdf" target="_blank" rel="noopener">
-      <div class="accent-strip">
-        <span style="background:var(--c-author)"></span>
-        <span style="background:var(--c-rhet)"></span>
-      </div>
-      <span class="card-tag tag-pdf">Presentation · PDF</span>
-      <h2>UCF AI Presentation</h2>
-      <p>A slide deck developed for the University of Central Florida covering generative AI in teaching and learning, prompt-engineering strategies, classroom applications, and ethical considerations. Freely shareable.</p>
-      <div class="card-footer">
-        <span class="card-link-label">View PDF</span>
-        <span class="card-arrow">↗</span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <p class="section-label">About</p>
-
-  <div class="about-grid">
-    <div class="about-text">
-      <h2>Thinking partner, not answer machine</h2>
-      <p>These tools address a core challenge in writing pedagogy: helping multilingual writers engage more deeply with academic texts through guided Socratic reasoning rather than surface-level summarising.</p>
-      <p>Instead of asking AI to generate answers, students learn to use AI as a structured thinking partner — working through a text systematically before forming their own arguments.</p>
-      <div class="callout">
-        <strong>Fully open &amp; browser-based.</strong> Every resource runs entirely in the browser with no login, no data collection, and no server. Fork it, adapt it, use it freely.
-      </div>
-    </div>
-
-    <div>
-      <p class="section-label" style="margin-bottom:1.25rem">The six analytical lenses</p>
-      <ul class="lens-list">
-        <li class="lens-item">
-          <span class="lens-dot" style="background:var(--c-issue)"></span>
-          <span class="lens-name" style="color:var(--c-issue)">Issue</span>
-          <span>The argument or problem being discussed</span>
-        </li>
-        <li class="lens-item">
-          <span class="lens-dot" style="background:var(--c-time)"></span>
-          <span class="lens-name" style="color:var(--c-time)">Time</span>
-          <span>Temporal and historical context</span>
-        </li>
-        <li class="lens-item">
-          <span class="lens-dot" style="background:var(--c-lang)"></span>
-          <span class="lens-name" style="color:var(--c-lang)">Language</span>
-          <span>Word choice, tone, and style</span>
-        </li>
-        <li class="lens-item">
-          <span class="lens-dot" style="background:var(--c-rhet)"></span>
-          <span class="lens-name" style="color:var(--c-rhet)">Rhetoric</span>
-          <span>Persuasive techniques and appeals</span>
-        </li>
-        <li class="lens-item">
-          <span class="lens-dot" style="background:var(--c-author)"></span>
-          <span class="lens-name" style="color:var(--c-author)">Author</span>
-          <span>Authorial stance and perspective</span>
-        </li>
-        <li class="lens-item">
-          <span class="lens-dot" style="background:var(--c-genre)"></span>
-          <span class="lens-name" style="color:var(--c-genre)">Genre</span>
-          <span>Text type and conventions</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>Created by <a href="https://github.com/acsuarez84" target="_blank" rel="noopener">A. C. Suarez</a> &nbsp;·&nbsp; Open educational resource &nbsp;·&nbsp; <a href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" target="_blank" rel="noopener">View on GitHub</a></p>
-</footer>
-
-<script>
-  const btn = document.getElementById('theme-btn');
-  const html = document.documentElement;
-  const stored = localStorage.getItem('theme');
-  if (stored) { html.dataset.theme = stored; btn.textContent = stored === 'dark' ? 'light' : 'dark'; }
-  btn.addEventListener('click', () => {
-    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    html.dataset.theme = next;
-    btn.textContent = next === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', next);
-  });
-</script>
 </body>
 </html>
