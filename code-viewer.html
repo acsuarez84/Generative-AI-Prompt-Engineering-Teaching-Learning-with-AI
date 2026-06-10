@@ -6,10 +6,10 @@
 <title>The Analytical Map — Source Code</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0d1117; color: #e6edf3; font-family: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, monospace; font-size: 13px; line-height: 1.6; }
+  body { background: #0d1117; color: #e6edf3; font-family: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, monospace; font-size: 15px; line-height: 1.6; }
 
   /* Header */
-  .header { background: #161b22; border-bottom: 1px solid #30363d; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .header { background: #161b22; border-bottom: 1px solid #30363d; padding: 14px 2in; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
   .header-left { display: flex; align-items: center; gap: 12px; }
   .header-title { font-size: 14px; color: #e6edf3; font-weight: 600; }
   .header-title span { color: #58a6ff; }
@@ -20,7 +20,7 @@
   .btn-blue:hover { background: #388bfd; }
 
   /* File info bar */
-  .file-bar { background: #161b22; border-bottom: 1px solid #30363d; padding: 10px 24px; display: flex; align-items: center; gap: 16px; font-size: 12px; color: #8b949e; }
+  .file-bar { background: #161b22; border-bottom: 1px solid #30363d; padding: 10px 2in; display: flex; align-items: center; gap: 16px; font-size: 14px; color: #8b949e; }
   .file-bar strong { color: #e6edf3; }
   .badge { background: #21262d; border: 1px solid #30363d; border-radius: 12px; padding: 2px 10px; font-size: 11px; }
 
@@ -57,7 +57,13 @@
   .pn { color: #e6edf3; }   /* punctuation */
 
   /* Footer */
-  .footer { padding: 24px; text-align: center; font-size: 11px; color: #484f58; border-top: 1px solid #21262d; margin-top: 8px; }
+  .footer { padding: 24px 2in; text-align: center; font-size: 13px; color: #484f58; border-top: 1px solid #21262d; margin-top: 8px; }
+
+  @media (max-width: 900px) {
+    .header { padding: 14px 1.5rem; }
+    .file-bar { padding: 10px 1.5rem; }
+    .footer { padding: 24px 1.5rem; }
+  }
 </style>
 </head>
 <body>

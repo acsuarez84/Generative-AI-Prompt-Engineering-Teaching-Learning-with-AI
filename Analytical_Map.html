@@ -67,7 +67,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-body);
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.55;
     background-image:
       radial-gradient(ellipse at top left, var(--bg-tint-1), transparent 55%),
@@ -77,7 +77,7 @@
     transition: background 0.3s, color 0.3s;
   }
 
-  .app { max-width: 1400px; margin: 0 auto; padding: 36px 40px 80px; }
+  .app { padding: 36px 2in 80px; }
 
   .header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--rule); padding-bottom: 22px; margin-bottom: 32px; }
   .h-left .title { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 60; font-size: 52px; font-weight: 380; letter-spacing: -0.025em; line-height: 0.95; font-style: italic; color: var(--ink); }
@@ -98,7 +98,7 @@
   .prompt-section { background: var(--paper); border: 1px solid var(--rule); padding: 24px 28px; margin-bottom: 32px; position: relative; box-shadow: 4px 4px 0 var(--rule-soft); }
   .prompt-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink-faded); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .prompt-label::before { content: '§'; font-family: var(--font-display); font-size: 14px; color: var(--c-issue); }
-  .prompt-textarea { width: 100%; background: transparent; border: none; resize: vertical; font-family: var(--font-body); font-size: 19px; line-height: 1.5; color: var(--ink); min-height: 50px; }
+  .prompt-textarea { width: 100%; background: transparent; border: none; resize: vertical; font-family: var(--font-body); font-size: 21px; line-height: 1.5; color: var(--ink); min-height: 50px; }
   .prompt-textarea:focus { outline: none; }
   .prompt-textarea::placeholder { color: var(--ink-faded); font-style: italic; }
   .prompt-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; gap: 12px; flex-wrap: wrap; }
@@ -121,7 +121,7 @@
   .panel-action:disabled { opacity: 0.4; cursor: not-allowed; }
   .panel-action.active { background: var(--c-rhet); color: var(--paper); border-color: var(--c-rhet); }
 
-  .anchored-prompt { background: var(--bg); border-left: 3px solid var(--c-issue); padding: 10px 14px; margin-bottom: 18px; font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .anchored-prompt { background: var(--bg); border-left: 3px solid var(--c-issue); padding: 10px 14px; margin-bottom: 18px; font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink-soft); line-height: 1.5; }
 
   .map-perspective { margin: 0 auto 12px; width: 100%; max-width: 580px; overflow: visible; }
   .map-wrap { position: relative; overflow: visible; }
@@ -293,7 +293,7 @@
   }
   .qpanel-text {
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.45;
     color: var(--ink);
     margin-bottom: 14px;
@@ -319,10 +319,10 @@
   .selected-tags { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
   .selected-tag { display: inline-block; font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--paper); padding: 4px 10px; }
   .tag-x { font-family: var(--font-display); font-style: italic; color: var(--ink-faded); }
-  .selected-description { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 22px; }
+  .selected-description { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 22px; }
 
   .questions-list { display: flex; flex-direction: column; gap: 14px; }
-  .question-item { padding: 16px 18px; background: var(--bg); border-left: 3px solid var(--ink-soft); font-family: var(--font-body); font-size: 16px; line-height: 1.45; position: relative; transition: all 0.15s; color: var(--ink); }
+  .question-item { padding: 16px 18px; background: var(--bg); border-left: 3px solid var(--ink-soft); font-family: var(--font-body); font-size: 18px; line-height: 1.45; position: relative; transition: all 0.15s; color: var(--ink); }
   .question-item:hover { background: var(--bg-deep); }
   .question-number { font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--ink-faded); margin-right: 8px; font-weight: 500; }
   .question-add { margin-top: 10px; background: none; border: none; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-faded); cursor: pointer; padding: 0; transition: color 0.15s; }
@@ -330,19 +330,19 @@
   .question-add:disabled { cursor: default; }
   .question-add.added { color: var(--c-time); font-style: italic; }
 
-  .loading-msg { font-family: var(--font-display); font-style: italic; color: var(--ink-faded); padding: 28px 14px; text-align: center; font-size: 15px; }
+  .loading-msg { font-family: var(--font-display); font-style: italic; color: var(--ink-faded); padding: 28px 14px; text-align: center; font-size: 17px; }
   .loading-msg::after { content: '...'; display: inline-block; animation: dots 1.4s infinite steps(4); width: 0; overflow: hidden; vertical-align: bottom; }
   @keyframes dots { 0%, 25% { width: 0; } 50% { width: 0.4em; } 75% { width: 0.8em; } 100% { width: 1.2em; } }
   .error-msg { font-family: var(--font-mono); font-size: 11px; color: var(--c-issue); text-align: center; padding: 16px; text-transform: uppercase; letter-spacing: 0.12em; }
 
-  .outline-empty { font-family: var(--font-display); font-style: italic; color: var(--ink-faded); font-size: 16px; text-align: center; padding: 60px 20px; line-height: 1.6; }
+  .outline-empty { font-family: var(--font-display); font-style: italic; color: var(--ink-faded); font-size: 18px; text-align: center; padding: 60px 20px; line-height: 1.6; }
   .outline-empty::before, .outline-empty::after { content: '— '; color: var(--rule); font-style: normal; }
   .outline-empty::after { content: ' —'; }
   .outline-item { background: var(--bg); border-left: 3px solid var(--ink-soft); padding: 16px 18px 14px; margin-bottom: 14px; position: relative; }
   .outline-source { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
   .outline-source .roman { font-family: var(--font-display); font-style: italic; color: var(--ink-faded); text-transform: none; letter-spacing: 0; font-size: 13px; }
-  .outline-question-text { font-size: 15.5px; line-height: 1.4; margin-bottom: 12px; color: var(--ink); }
-  .outline-notes { width: 100%; background: var(--paper); border: 1px solid var(--rule-soft); padding: 10px 12px; font-family: var(--font-body); font-size: 14.5px; line-height: 1.5; resize: vertical; min-height: 60px; color: var(--ink); transition: border-color 0.15s; }
+  .outline-question-text { font-size: 17px; line-height: 1.4; margin-bottom: 12px; color: var(--ink); }
+  .outline-notes { width: 100%; background: var(--paper); border: 1px solid var(--rule-soft); padding: 10px 12px; font-family: var(--font-body); font-size: 16px; line-height: 1.5; resize: vertical; min-height: 60px; color: var(--ink); transition: border-color 0.15s; }
   .outline-notes:focus { outline: none; border-color: var(--ink-soft); }
   .outline-notes::placeholder { color: var(--ink-faded); font-style: italic; }
   .outline-controls { display: flex; gap: 14px; margin-top: 8px; align-items: center; }
@@ -354,7 +354,7 @@
   .colophon { text-align: center; margin-top: 60px; font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--ink-faded); }
   .colophon::before { content: '✦'; display: block; color: var(--rule); margin-bottom: 10px; font-size: 12px; }
 
-  @media (max-width: 1080px) { .main-grid { grid-template-columns: 1fr; } .map-wrap { max-width: 460px; } }
+  @media (max-width: 1080px) { .main-grid { grid-template-columns: 1fr; } .map-wrap { max-width: 460px; } .app { padding: 36px 1.5rem 80px; } }
   @media (max-width: 640px) {
     .app { padding: 22px 18px; }
     .h-left .title { font-size: 36px; }
