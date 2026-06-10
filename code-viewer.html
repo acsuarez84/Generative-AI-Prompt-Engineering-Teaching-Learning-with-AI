@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Analytical Map — Source Code</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1117; color: #e6edf3; font-family: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, monospace; font-size: 13px; line-height: 1.6; }
+
+  /* Header */
+  .header { background: #161b22; border-bottom: 1px solid #30363d; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .header-title { font-size: 14px; color: #e6edf3; font-weight: 600; }
+  .header-title span { color: #58a6ff; }
+  .header-meta { font-size: 12px; color: #8b949e; }
+  .btn { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; font-family: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s; }
+  .btn:hover { background: #30363d; }
+  .btn-blue { background: #1f6feb; border-color: #1f6feb; color: #fff; }
+  .btn-blue:hover { background: #388bfd; }
+
+  /* File info bar */
+  .file-bar { background: #161b22; border-bottom: 1px solid #30363d; padding: 10px 24px; display: flex; align-items: center; gap: 16px; font-size: 12px; color: #8b949e; }
+  .file-bar strong { color: #e6edf3; }
+  .badge { background: #21262d; border: 1px solid #30363d; border-radius: 12px; padding: 2px 10px; font-size: 11px; }
+
+  /* Code container */
+  .code-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 0; vertical-align: top; }
+  td.ln {
+    width: 1%;
+    min-width: 52px;
+    padding: 0 16px 0 24px;
+    text-align: right;
+    color: #6e7681;
+    user-select: none;
+    border-right: 1px solid #21262d;
+    white-space: nowrap;
+    background: #0d1117;
+  }
+  td.ln:hover { color: #e6edf3; cursor: pointer; }
+  td.code { padding: 0 24px 0 16px; white-space: pre; }
+  tr:hover td { background: #161b22 !important; }
+  tr:target td { background: #272e3a !important; }
+
+  /* Syntax highlighting */
+  .kw { color: #ff7b72; }   /* keywords */
+  .fn { color: #d2a8ff; }   /* functions */
+  .st { color: #a5d6ff; }   /* strings */
+  .cm { color: #8b949e; font-style: italic; } /* comments */
+  .nm { color: #79c0ff; }   /* numbers */
+  .tg { color: #7ee787; }   /* html tags */
+  .at { color: #ff7b72; }   /* attributes */
+  .vl { color: #a5d6ff; }   /* attribute values */
+  .cs { color: #ffa657; }   /* css properties */
+  .pn { color: #e6edf3; }   /* punctuation */
+
+  /* Footer */
+  .footer { padding: 24px; text-align: center; font-size: 11px; color: #484f58; border-top: 1px solid #21262d; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <svg width="20" height="20" viewBox="0 0 16 16" fill="#e6edf3"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    <div class="header-title"><span>acsuarez84</span> / Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI / <span>index.html</span></div>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <a class="btn" href="https://acsuarez84.github.io/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI/" target="_blank">↗ Open Live Tool</a>
+    <a class="btn btn-blue" href="https://raw.githubusercontent.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI/main/index.html" target="_blank" download="analytical-map.html">⬇ Raw / Download</a>
+  </div>
+</div>
+
+<div class="file-bar">
+  <strong>index.html</strong>
+  <span class="badge">HTML</span>
+  <span id="line-count">Loading…</span>
+  <span>·</span>
+  <span>The Analytical Map — A Socratic Brainstorming Tool</span>
+</div>
+
+<div class="code-wrap">
+  <table id="code-table"><tbody id="code-body"></tbody></table>
+</div>
+
+<div class="footer">
+  The Analytical Map · acsuarez84 · View on <a href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" style="color:#58a6ff;" target="_blank">GitHub</a>
+</div>
+
+<script>
+const RAW_URL = 'https://raw.githubusercontent.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI/main/index.html';
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Simple syntax highlighter for HTML/JS/CSS
+function highlight(line) {
+  let s = esc(line);
+
+  // HTML comments
+  s = s.replace(/(&lt;!--.*?--&gt;)/g, '<span class="cm">$1</span>');
+  // JS single-line comments
+  s = s.replace(/(\/\/[^\n]*)/g, '<span class="cm">$1</span>');
+  // HTML tags
+  s = s.replace(/(&lt;\/?)([\w\-]+)/g, '$1<span class="tg">$2</span>');
+  // HTML attributes
+  s = s.replace(/\s([\w\-]+)(=)(&quot;)/g, ' <span class="at">$1</span>$2<span class="vl">$3</span>');
+  // JS keywords
+  s = s.replace(/\b(const|let|var|function|return|if|else|for|while|new|typeof|instanceof|switch|case|break|default|try|catch|finally|async|await|class|import|export|null|undefined|true|false|this)\b/g, '<span class="kw">$1</span>');
+  // Strings (single-quoted, double-quoted, template)
+  s = s.replace(/(&quot;[^&]*?&quot;)/g, '<span class="st">$1</span>');
+  s = s.replace(/(&#39;[^&#]*?&#39;)/g, '<span class="st">$1</span>');
+  // Numbers
+  s = s.replace(/\b(\d+\.?\d*)\b/g, '<span class="nm">$1</span>');
+  // CSS properties
+  s = s.replace(/(--[\w-]+)(:)/g, '<span class="cs">$1</span>$2');
+  // Functions
+  s = s.replace(/\b(function|getElementById|querySelector|querySelectorAll|addEventListener|forEach|indexOf|push|pop|splice|join|split|map|filter|find|findIndex|sort|slice|replace|trim|parseInt|parseFloat|Math|JSON|fetch|Array|Object|Date|console|setTimeout|clearTimeout|setInterval|alert|window|document|navigator)\b/g, '<span class="fn">$1</span>');
+
+  return s;
+}
+
+async function loadCode() {
+  const tbody = document.getElementById('code-body');
+  try {
+    const res = await fetch(RAW_URL);
+    if (!res.ok) throw new Error('fetch failed');
+    const text = await res.text();
+    const lines = text.split('\n');
+
+    document.getElementById('line-count').textContent = lines.length + ' lines · ' + (text.length / 1024).toFixed(1) + ' KB';
+
+    let html = '';
+    lines.forEach(function(line, i) {
+      const n = i + 1;
+      html += '<tr id="L' + n + '">'
+        + '<td class="ln" onclick="location.hash=\'L' + n + '\'">' + n + '</td>'
+        + '<td class="code">' + highlight(line || ' ') + '</td>'
+        + '</tr>';
+    });
+    tbody.innerHTML = html;
+  } catch (e) {
+    tbody.innerHTML = '<tr><td class="ln">—</td><td class="code" style="color:#ff7b72;padding:24px;">Could not load file. <a href="' + RAW_URL + '" style="color:#58a6ff;" target="_blank">View raw on GitHub ↗</a></td></tr>';
+    document.getElementById('line-count').textContent = 'Error loading file';
+  }
+}
+
+loadCode();
+</script>
+</body>
+</html>
