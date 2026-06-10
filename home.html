@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. C. Suarez — AI &amp; Writing Pedagogy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-deep: #f5f5f5;
+    --paper: #ffffff;
+    --ink: #000000;
+    --ink-soft: #2a2a2a;
+    --ink-faded: #6a6a6a;
+    --rule: #cccccc;
+    --rule-soft: #e5e5e5;
+
+    --c-issue:  #7a1f1f;
+    --c-time:   #2d4a3e;
+    --c-lang:   #ad7a1a;
+    --c-rhet:   #2a3a6b;
+    --c-author: #a8542f;
+    --c-genre:  #5d3a5f;
+
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:    'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg: #000000;
+    --bg-deep: #0a0a0a;
+    --paper: #000000;
+    --ink: #ffffff;
+    --ink-soft: #d5d5d5;
+    --ink-faded: #959595;
+    --rule: #333333;
+    --rule-soft: #1a1a1a;
+
+    --c-issue:  #e85c5c;
+    --c-time:   #6db896;
+    --c-lang:   #e8a93a;
+    --c-rhet:   #7a9ce0;
+    --c-author: #e8884a;
+    --c-genre:  #b08bb8;
+  }
+
+  html, body { min-height: 100vh; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+
+  /* ── Layout ─────────────────────────────── */
+  .site { max-width: 1100px; margin: 0 auto; padding: 40px 40px 100px; }
+
+  /* ── Header ─────────────────────────────── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 48px;
+  }
+  .header-name {
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 144, 'SOFT' 60;
+    font-size: 52px;
+    font-weight: 380;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .header-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-faded);
+    margin-top: 10px;
+  }
+  .header-right {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+  }
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-faded);
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav-link:hover { border-color: var(--rule); color: var(--ink); }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    color: var(--ink-soft);
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover { border-color: var(--ink); color: var(--ink); transform: rotate(180deg); }
+
+  /* ── Intro ──────────────────────────────── */
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .intro-body p {
+    font-size: 19px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .intro-body p:last-child { margin-bottom: 0; }
+  .intro-meta { padding-top: 4px; }
+  .meta-block {
+    border-left: 3px solid var(--c-issue);
+    padding: 10px 16px;
+    margin-bottom: 18px;
+  }
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-faded);
+    margin-bottom: 4px;
+  }
+  .meta-value {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ── Section heading ────────────────────── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-faded);
+    white-space: nowrap;
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule-soft);
+  }
+
+  /* ── Resource cards ─────────────────────── */
+  .resources { margin-bottom: 64px; }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 4px 4px 0 var(--rule-soft);
+    padding: 26px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+  }
+  .card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--rule);
+  }
+  .card-type {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--card-accent, var(--ink-faded));
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-type::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--card-accent, var(--ink-faded));
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .card-desc {
+    font-size: 14px;
+    color: var(--ink-faded);
+    line-height: 1.55;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  .card-cta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--card-accent, var(--ink));
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .card-cta::after {
+    content: '→';
+    transition: transform 0.15s;
+  }
+  .card:hover .card-cta::after { transform: translateX(4px); }
+
+  /* card accent colors */
+  .card--tool   { --card-accent: var(--c-rhet); }
+  .card--pdf    { --card-accent: var(--c-issue); }
+  .card--code   { --card-accent: var(--c-time); }
+
+  /* ── Context panel ──────────────────────── */
+  .context-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+    margin-bottom: 64px;
+  }
+  .panel {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 4px 4px 0 var(--rule-soft);
+    padding: 26px 28px;
+  }
+  .panel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-faded);
+    margin-bottom: 4px;
+  }
+  .panel-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .panel-body {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .panel-body p { margin-bottom: 12px; }
+  .panel-body p:last-child { margin-bottom: 0; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    padding: 4px 12px;
+    border: 1px solid var(--rule);
+    color: var(--ink-faded);
+  }
+
+  /* ── Footer ─────────────────────────────── */
+  .footer {
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-left {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-faded);
+  }
+  .footer-right a {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-faded);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-right a:hover { color: var(--ink); }
+
+  /* ── Responsive ─────────────────────────── */
+  @media (max-width: 860px) {
+    .site { padding: 28px 24px 80px; }
+    .header { flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .header-name { font-size: 40px; }
+    .intro { grid-template-columns: 1fr; gap: 28px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .context-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="site">
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <div class="header-name">A. C. Suarez</div>
+      <div class="header-role">Educator &nbsp;·&nbsp; AI &amp; Writing Pedagogy &nbsp;·&nbsp; Multilingual Learner Specialist</div>
+    </div>
+    <div class="header-right">
+      <a class="nav-link" href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" target="_blank">GitHub</a>
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme" title="Toggle light / dark">☽</button>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="intro-body">
+      <p>
+        This page collects open resources developed at the intersection of generative AI, prompt engineering, and writing pedagogy — designed for multilingual learners, teachers, and researchers who want to work with AI thoughtfully.
+      </p>
+      <p>
+        Each resource is freely available: use them in class, share them with students, or adapt them for your own context. Nothing requires an account or login.
+      </p>
+    </div>
+    <div class="intro-meta">
+      <div class="meta-block" style="border-color: var(--c-rhet);">
+        <div class="meta-label">Focus</div>
+        <div class="meta-value">Socratic reasoning, analytical writing, and AI as a thinking partner</div>
+      </div>
+      <div class="meta-block" style="border-color: var(--c-time);">
+        <div class="meta-label">Audience</div>
+        <div class="meta-value">Multilingual writers, writing instructors, curriculum designers</div>
+      </div>
+      <div class="meta-block" style="border-color: var(--c-lang);">
+        <div class="meta-label">Format</div>
+        <div class="meta-value">Interactive web tools &amp; downloadable PDF presentation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="resources">
+    <div class="section-head">
+      <span class="section-label">Resources</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="card-grid">
+
+      <a class="card card--tool" href="index.html" target="_blank">
+        <div class="card-type">Interactive Tool</div>
+        <div class="card-title">The Analytical Map</div>
+        <div class="card-desc">
+          A Socratic brainstorming tool that guides writers through six analytical lenses — issue, time, language, rhetoric, author, and genre — to deepen inquiry before drafting.
+        </div>
+        <div class="card-cta">Open tool</div>
+      </a>
+
+      <a class="card card--pdf" href="UCF_AI_Presentation.pdf" target="_blank">
+        <div class="card-type">PDF Presentation</div>
+        <div class="card-title">UCF AI Presentation</div>
+        <div class="card-desc">
+          Slide deck from a University of Central Florida session on generative AI in teaching and learning — covering prompt engineering strategies, classroom applications, and ethical considerations.
+        </div>
+        <div class="card-cta">View PDF</div>
+      </a>
+
+      <a class="card card--code" href="code-viewer.html" target="_blank">
+        <div class="card-type">Source Code</div>
+        <div class="card-title">View the Source</div>
+        <div class="card-desc">
+          Explore the full annotated HTML/CSS/JS source of The Analytical Map in a syntax-highlighted code viewer — useful for educators who want to understand or adapt the tool.
+        </div>
+        <div class="card-cta">Browse code</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Context panel -->
+  <section>
+    <div class="section-head">
+      <span class="section-label">Background</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="context-grid">
+      <div class="panel">
+        <div class="panel-label">About the project</div>
+        <div class="panel-title">Teaching &amp; Learning with AI</div>
+        <div class="panel-body">
+          <p>
+            This project grew out of the challenge of helping multilingual writers engage more deeply with academic texts — and the observation that AI, when prompted carefully, can act as a genuine Socratic interlocutor rather than just an answer machine.
+          </p>
+          <p>
+            The Analytical Map externalises the invisible thinking moves skilled readers make: it asks writers to interrogate a text through time, language, rhetoric, genre, and authorial stance before forming their own argument. Prompting AI to inhabit each lens turns passive reading into active dialogue.
+          </p>
+          <p>
+            All tools here are built as static web pages — no server, no account, no data collected. They run entirely in the browser.
+          </p>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">Writing Pedagogy</span>
+          <span class="tag">Multilingual Learners</span>
+          <span class="tag">Socratic Method</span>
+          <span class="tag">Generative AI</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">How to use these resources</div>
+        <div class="panel-title">For educators</div>
+        <div class="panel-body">
+          <p>Click any card to open the resource directly in your browser. Every resource is read-only and self-contained.</p>
+          <p>The Analytical Map works best when students paste a short passage (100–300 words) and then work through each concept node before writing their response.</p>
+          <p>The PDF is freely shareable — link it in your LMS, print it, or adapt the slides for your own workshop.</p>
+          <p>The source viewer is for the technically curious: you can copy the entire <code style="font-family:var(--font-mono);font-size:13px;">index.html</code> and host it anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">A. C. Suarez &nbsp;·&nbsp; AI &amp; Writing Pedagogy &nbsp;·&nbsp; Open resources</div>
+    <div class="footer-right">
+      <a href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" target="_blank">View on GitHub</a>
+    </div>
+  </footer>
+
+</div><!-- /site -->
+
+<script>
+(function () {
+  const btn = document.getElementById('themeBtn');
+  const html = document.documentElement;
+  function apply(theme) {
+    html.setAttribute('data-theme', theme);
+    btn.textContent = theme === 'dark' ? '☀' : '☽';
+    localStorage.setItem('theme', theme);
+  }
+  btn.addEventListener('click', function () {
+    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  const saved = localStorage.getItem('theme');
+  const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  apply(saved || preferred);
+})();
+</script>
+
+</body>
+</html>
