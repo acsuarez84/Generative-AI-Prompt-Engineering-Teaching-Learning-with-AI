@@ -61,46 +61,71 @@
     transition: background .2s, color .2s;
   }
 
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
+  /* ── BANNER ── */
+  .banner {
+    position: relative;
+    background: #dddddd;
+    min-height: 220px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: .75rem 2in;
+    padding: 2rem 2in;
+    overflow: hidden;
   }
 
-  .nav-brand {
+  [data-theme="dark"] .banner { background: #1a1a1a; }
+
+  .banner-content {
+    flex: 1;
+    padding-right: 160px;
+  }
+
+  .banner-name {
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
     font-weight: 600;
+    letter-spacing: -.02em;
     color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -.01em;
+    margin-bottom: .75rem;
   }
 
-  .nav-links {
+  .banner-links {
     display: flex;
     gap: 1.5rem;
     list-style: none;
+    flex-wrap: wrap;
     align-items: center;
   }
 
-  .nav-links a {
+  .banner-links a {
     font-family: var(--font-mono);
     font-size: .75rem;
-    color: var(--ink-faded);
+    color: var(--ink-soft);
     text-decoration: none;
-    letter-spacing: .04em;
+    letter-spacing: .06em;
     text-transform: uppercase;
     transition: color .15s;
+    border-bottom: 1px solid transparent;
   }
 
-  .nav-links a:hover { color: var(--ink); }
+  .banner-links a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .banner-photo {
+    position: absolute;
+    right: 2in;
+    top: 0;
+    height: 100%;
+    width: 160px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .banner-controls {
+    position: absolute;
+    top: 1rem;
+    right: calc(2in + 170px);
+  }
 
   #theme-btn {
     background: none;
@@ -117,7 +142,7 @@
 
   /* ── HERO ── */
   .hero {
-    padding: 6rem 2in 4rem;
+    padding: 4rem 2in 3rem;
     text-align: center;
   }
 
@@ -367,17 +392,22 @@
   footer a:hover { color: var(--ink); border-color: var(--ink); }
 
   @media (max-width: 900px) {
-    nav { padding: .75rem 1.5rem; }
-    .hero { padding: 4rem 1.5rem 3rem; }
+    .banner { padding: 1.5rem 1.5rem; min-height: 180px; }
+    .banner-photo { right: 1.5rem; width: 130px; }
+    .banner-content { padding-right: 140px; }
+    .banner-controls { right: calc(1.5rem + 140px); }
+    .hero { padding: 3rem 1.5rem 2.5rem; }
     section { padding: 3rem 1.5rem; }
     footer { padding: 2rem 1.5rem; }
     .projects-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   }
   @media (max-width: 600px) {
-    nav { padding: .75rem 1rem; }
-    .nav-links { gap: .75rem; }
+    .banner { padding: 1rem 1rem 1rem; min-height: auto; flex-direction: column; align-items: flex-start; }
+    .banner-photo { position: static; width: 80px; height: 80px; border-radius: 50%; margin-top: 1rem; }
+    .banner-content { padding-right: 0; }
+    .banner-controls { position: static; margin-top: .5rem; }
     section { padding: 3rem 1rem; }
-    .hero { padding: 4rem 1rem 3rem; }
+    .hero { padding: 3rem 1rem 2rem; }
     .projects-grid { grid-template-columns: 1fr; }
     footer { padding: 2rem 1rem; }
   }
@@ -385,23 +415,22 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#">A. C. Suarez De Jesus</a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" target="_blank" rel="noopener">GitHub</a></li>
-    <li><button id="theme-btn" aria-label="Toggle theme">dark</button></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <p class="hero-eyebrow">Open Educational Resource</p>
-  <h1>Generative AI &amp; <em>Writing Through Prompt Engineering</em></h1>
-  <p>Prompt-engineering tools and curriculum resources for multilingual learners, writing instructors, and curriculum designers who want to use AI thoughtfully in the classroom.</p>
-  <div class="hero-rule"></div>
+<!-- BANNER -->
+<header class="banner">
+  <div class="banner-content">
+    <div class="banner-name">Angely C. Suarez DeJesus</div>
+    <ul class="banner-links">
+      <li><a href="Analytical_Map.html">The Analytical Map</a></li>
+      <li><a href="code-viewer.html">Code Viewer</a></li>
+      <li><a href="presentation.html">UCF AI Presentation</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://github.com/acsuarez84/Generative-AI-Prompt-Engineering-Teaching-Learning-with-AI" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+  <div class="banner-controls">
+    <button id="theme-btn" aria-label="Toggle theme">dark</button>
+  </div>
+  <img class="banner-photo" src="profile.jpg" alt="Angely C. Suarez DeJesus">
 </header>
 
 <!-- PROJECTS -->
