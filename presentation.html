@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UCF AI Presentation — A. C. Suarez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #ffffff;
+    --ink:       #000000;
+    --ink-faded: #6a6a6a;
+    --rule:      #cccccc;
+    --rule-soft: #e5e5e5;
+    --c-author:  #a8542f;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg:        #000000;
+    --ink:       #ffffff;
+    --ink-faded: #959595;
+    --rule:      #333333;
+    --rule-soft: #1a1a1a;
+    --c-author:  #e8884a;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    transition: background .2s, color .2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 1.2in;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: var(--ink-faded);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 5px 12px;
+    transition: color .15s, border-color .15s;
+  }
+  .back-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  .topbar-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  .topbar-right { display: flex; gap: 1rem; align-items: center; }
+
+  .dl-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: var(--ink-faded);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 5px 12px;
+    transition: color .15s, border-color .15s;
+  }
+  .dl-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* ── PDF FRAME ── */
+  .pdf-wrap {
+    flex: 1;
+    padding: 2rem 1.2in;
+    min-height: 0;
+  }
+
+  .pdf-embed {
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+    border: 1px solid var(--rule);
+  }
+
+  /* ── FOOTER ── */
+  .foot {
+    padding: .75rem 1.2in;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .foot a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: var(--ink-faded);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 5px 12px;
+    transition: color .15s, border-color .15s;
+  }
+  .foot a:hover { color: var(--ink); border-color: var(--ink); }
+
+  .foot-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--ink-faded);
+  }
+
+  @media (max-width: 900px) {
+    .topbar, .pdf-wrap, .foot { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .topbar, .pdf-wrap, .foot { padding-left: 1rem; padding-right: 1rem; }
+    .topbar-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <a class="back-link" href="index.html">← Home</a>
+    <span class="topbar-title">UCF AI Presentation</span>
+  </div>
+  <div class="topbar-right">
+    <a class="dl-link" href="UCF_AI_Presentation.pdf" download>⬇ Download PDF</a>
+  </div>
+</div>
+
+<div class="pdf-wrap">
+  <embed class="pdf-embed" src="UCF_AI_Presentation.pdf" type="application/pdf">
+</div>
+
+<div class="foot">
+  <span class="foot-label">A. C. Suarez &nbsp;·&nbsp; Open Educational Resource</span>
+  <a href="index.html">← Home</a>
+</div>
+
+</body>
+</html>
