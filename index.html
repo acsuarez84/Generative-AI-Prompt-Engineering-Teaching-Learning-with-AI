@@ -297,6 +297,9 @@
     color: var(--ink);
   }
 
+  .rubric-link:hover { color: var(--ink); }
+  .rubric-link:hover .card-arrow { transform: translateX(4px); color: var(--ink); }
+
   /* ── ACCENT STRIP ── */
   .accent-strip {
     display: flex;
@@ -499,7 +502,7 @@
     </a>
 
     <!-- Accommodated Rubric -->
-    <a class="card" href="Frankenstein_Rubric_Claude_ESE-IEP-504.pdf">
+    <div class="card" style="cursor:default;">
       <div class="accent-strip">
         <span style="background:var(--c-issue)"></span>
         <span style="background:var(--c-time)"></span>
@@ -510,12 +513,16 @@
       </div>
       <span class="card-tag tag-pdf">Rubric · PDF</span>
       <h2>Rubric with ESE/IEP/504 Accommodations</h2>
-      <p>An accessible version of the <em>Frankenstein</em> analytical-map project rubric — built with OpenDyslexic font, large checkbox-based scoring, color-blind-safe patterns, and feedback prompts tied to the six analytical lenses (Issue, Time, Language, Rhetoric, Author, Genre). Two versions are provided: one developed with Claude and one with ChatGPT, so educators can compare approaches.</p>
-      <div class="card-footer">
-        <span class="card-link-label">View Claude version</span>
-        <span class="card-arrow">↗</span>
+      <p>An accessible version of the <em>Frankenstein</em> analytical-map project rubric — built with OpenDyslexic font, large checkbox-based scoring, color-blind-safe patterns, and feedback prompts tied to the six analytical lenses (Issue, Time, Language, Rhetoric, Author, Genre). Two versions are provided for comparison.</p>
+      <div class="card-footer" style="flex-direction: column; align-items: stretch; gap: .5rem;">
+        <a href="Claude_Rubric_Accomodated.pdf" class="card-link-label rubric-link" style="display:flex; justify-content:space-between; text-decoration:none; transition: color .15s;">
+          <span>View Claude version</span><span class="card-arrow">↗</span>
+        </a>
+        <a href="Chat_GPT_Accessible_Rubric.pdf" class="card-link-label rubric-link" style="display:flex; justify-content:space-between; text-decoration:none; transition: color .15s;">
+          <span>View ChatGPT version</span><span class="card-arrow">↗</span>
+        </a>
       </div>
-    </a>
+    </div>
 
   </div>
 </section>
