@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubric (ChatGPT Version) — Angely C. Suarez DeJesus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #ffffff;
+    --bg-deep:    #f5f5f5;
+    --paper:      #ffffff;
+    --ink:        #000000;
+    --ink-soft:   #2a2a2a;
+    --ink-faded:  #6a6a6a;
+    --rule:       #cccccc;
+    --rule-soft:  #e5e5e5;
+    --c-author:   #a8542f;
+
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:    'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg:        #000000;
+    --bg-deep:   #0a0a0a;
+    --paper:     #111111;
+    --ink:       #ffffff;
+    --ink-soft:  #d5d5d5;
+    --ink-faded: #959595;
+    --rule:      #333333;
+    --rule-soft: #1a1a1a;
+    --c-author:  #e8884a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    transition: background .2s, color .2s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── BAR ── */
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2in;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg-deep);
+    flex-wrap: wrap;
+  }
+
+  .bar-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .bar-tag {
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .2rem .55rem;
+    border-radius: 3px;
+    display: inline-block;
+    background: color-mix(in srgb, var(--c-author) 12%, transparent);
+    color: var(--c-author);
+    margin-right: .75rem;
+  }
+
+  .bar-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: .5rem 1rem;
+    transition: border-color .15s, color .15s, background .15s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+  }
+
+  .btn:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--ink-soft);
+    color: var(--bg);
+  }
+
+  /* ── VIEWER ── */
+  .viewer-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2in 2rem;
+    gap: 1rem;
+  }
+
+  .viewer-wrap embed,
+  .viewer-wrap iframe {
+    flex: 1;
+    width: 100%;
+    min-height: 80vh;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    background: var(--paper);
+  }
+
+  .fallback {
+    font-size: .95rem;
+    color: var(--ink-faded);
+    text-align: center;
+  }
+
+  .fallback a {
+    color: var(--c-author);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .bar { padding: 1rem 1.5rem; }
+    .viewer-wrap { padding: 1.5rem 1.5rem 2rem; }
+  }
+  @media (max-width: 600px) {
+    .bar { padding: .85rem 1rem; flex-direction: column; align-items: flex-start; }
+    .viewer-wrap { padding: 1rem 1rem 1.5rem; }
+    .viewer-wrap embed, .viewer-wrap iframe { min-height: 65vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div>
+    <span class="bar-tag">Rubric · PDF</span>
+    <span class="bar-title">Rubric with ESE/IEP/504 Accommodations — ChatGPT Version</span>
+  </div>
+  <div class="bar-actions">
+    <a class="btn btn-primary" href="index.html">&larr; Home</a>
+    <a class="btn" href="Chat_GPT_Accessible_Rubric.pdf" download>Download PDF</a>
+  </div>
+</div>
+
+<div class="viewer-wrap">
+  <embed src="Chat_GPT_Accessible_Rubric.pdf" type="application/pdf">
+  <p class="fallback">
+    If the rubric doesn't display above, <a href="Chat_GPT_Accessible_Rubric.pdf">open the PDF directly</a>.
+  </p>
+</div>
+
+</body>
+</html>
