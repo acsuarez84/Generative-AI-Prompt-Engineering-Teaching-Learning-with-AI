@@ -212,7 +212,7 @@
   /* ── PROJECT CARDS ── */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2.5rem;
   }
 
@@ -494,6 +494,25 @@
       <p>A slide deck developed for the University of Central Florida covering generative AI in teaching and learning, prompt-engineering strategies, classroom applications, and ethical considerations. Freely shareable.</p>
       <div class="card-footer">
         <span class="card-link-label">View PDF</span>
+        <span class="card-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- Accommodated Rubric -->
+    <a class="card" href="Frankenstein_Rubric_Claude_ESE-IEP-504.pdf">
+      <div class="accent-strip">
+        <span style="background:var(--c-issue)"></span>
+        <span style="background:var(--c-time)"></span>
+        <span style="background:var(--c-lang)"></span>
+        <span style="background:var(--c-rhet)"></span>
+        <span style="background:var(--c-author)"></span>
+        <span style="background:var(--c-genre)"></span>
+      </div>
+      <span class="card-tag tag-pdf">Rubric · PDF</span>
+      <h2>Rubric with ESE/IEP/504 Accommodations</h2>
+      <p>An accessible version of the <em>Frankenstein</em> analytical-map project rubric — built with OpenDyslexic font, large checkbox-based scoring, color-blind-safe patterns, and feedback prompts tied to the six analytical lenses (Issue, Time, Language, Rhetoric, Author, Genre). Two versions are provided: one developed with Claude and one with ChatGPT, so educators can compare approaches.</p>
+      <div class="card-footer">
+        <span class="card-link-label">View Claude version</span>
         <span class="card-arrow">↗</span>
       </div>
     </a>
