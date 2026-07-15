@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UCF AI Presentation — A. C. Suarez</title>
+<title>UCF AI Presentation — Angely C. Suarez DeJesus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,17 +13,20 @@
   :root {
     --bg:        #ffffff;
     --ink:       #000000;
+    --ink-soft:  #2a2a2a;
     --ink-faded: #6a6a6a;
     --rule:      #cccccc;
     --rule-soft: #e5e5e5;
     --c-author:  #a8542f;
     --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Newsreader', Georgia, serif;
     --font-mono:    'JetBrains Mono', ui-monospace, monospace;
   }
 
   [data-theme="dark"] {
     --bg:        #000000;
     --ink:       #ffffff;
+    --ink-soft:  #d5d5d5;
     --ink-faded: #959595;
     --rule:      #333333;
     --rule-soft: #1a1a1a;
@@ -36,62 +39,133 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.7;
     transition: background .2s, color .2s;
     display: flex;
     flex-direction: column;
   }
 
-  /* ── TOPBAR ── */
-  .topbar {
+  /* ── BANNER ── */
+  .banner {
+    position: relative;
+    background: #dddddd;
+    padding: 1.5rem 1.2in;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 1rem;
+  }
+
+  [data-theme="dark"] .banner { background: #1a1a1a; }
+
+  .banner-left {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+
+  .banner-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+
+  .banner-subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(.85rem, 1.5vw, 1.1rem);
+    font-weight: 400;
+    color: var(--ink-faded);
+  }
+
+  .banner-nav {
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: .5rem;
+  }
+
+  .banner-nav a {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+
+  .banner-nav a:hover,
+  .banner-nav a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .banner-right {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    flex-shrink: 0;
+  }
+
+  #theme-btn {
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--ink-faded);
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    padding: .3rem .6rem;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  #theme-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* ── ACTION BAR ── */
+  .action-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: .75rem 1.2in;
     border-bottom: 1px solid var(--rule);
-    background: var(--bg);
     flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: .75rem;
   }
 
-  .topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .back-link {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .18em;
-    color: var(--ink-faded);
-    text-decoration: none;
-    border: 1px solid var(--rule);
-    padding: 5px 12px;
-    transition: color .15s, border-color .15s;
-  }
-  .back-link:hover { color: var(--ink); border-color: var(--ink); }
-
-  .topbar-title {
+  .action-bar-title {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 18px;
+    font-size: 1.1rem;
     color: var(--ink);
   }
 
-  .topbar-right { display: flex; gap: 1rem; align-items: center; }
+  .action-bar-btns {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+  }
 
-  .dl-link {
+  .btn {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: .72rem;
     text-transform: uppercase;
-    letter-spacing: .18em;
+    letter-spacing: .12em;
     color: var(--ink-faded);
     text-decoration: none;
     border: 1px solid var(--rule);
-    padding: 5px 12px;
+    padding: 5px 14px;
     transition: color .15s, border-color .15s;
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
   }
-  .dl-link:hover { color: var(--ink); border-color: var(--ink); }
+  .btn:hover { color: var(--ink); border-color: var(--ink); }
 
   /* ── PDF FRAME ── */
   .pdf-wrap {
@@ -105,6 +179,7 @@
     height: 100%;
     min-height: 80vh;
     border: 1px solid var(--rule);
+    display: block;
   }
 
   /* ── FOOTER ── */
@@ -115,52 +190,68 @@
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .foot-label {
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--ink-faded);
   }
 
   .foot a {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: .65rem;
     text-transform: uppercase;
-    letter-spacing: .18em;
+    letter-spacing: .14em;
     color: var(--ink-faded);
     text-decoration: none;
     border: 1px solid var(--rule);
-    padding: 5px 12px;
+    padding: 4px 10px;
     transition: color .15s, border-color .15s;
   }
   .foot a:hover { color: var(--ink); border-color: var(--ink); }
 
-  .foot-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .16em;
-    color: var(--ink-faded);
-  }
-
   @media (max-width: 900px) {
-    .topbar, .pdf-wrap, .foot { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .banner, .action-bar, .pdf-wrap, .foot { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
   @media (max-width: 600px) {
-    .topbar, .pdf-wrap, .foot { padding-left: 1rem; padding-right: 1rem; }
-    .topbar-title { display: none; }
+    .banner, .action-bar, .pdf-wrap, .foot { padding-left: 1rem; padding-right: 1rem; }
+    .banner-name { font-size: 1.2rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-left">
-    <a class="back-link" href="index.html">← Home</a>
-    <span class="topbar-title">UCF AI Presentation</span>
+<header class="banner">
+  <div class="banner-left">
+    <div class="banner-name">Angely C. Suarez DeJesus</div>
+    <div class="banner-subtitle">Generative AI &amp; <em>Writing Through Prompt Engineering</em></div>
+    <ul class="banner-nav">
+      <li><a href="index.html">← Home</a></li>
+      <li><a href="Analytical_Map.html">The Analytical Map</a></li>
+      <li><a href="code-viewer.html">Code Viewer</a></li>
+      <li><a href="presentation.html" aria-current>UCF AI Presentation</a></li>
+    </ul>
   </div>
-  <div class="topbar-right">
-    <a class="dl-link" href="UCF_AI_Presentation.pdf" download>⬇ Download PDF</a>
+  <div class="banner-right">
+    <button id="theme-btn">dark</button>
+  </div>
+</header>
+
+<div class="action-bar">
+  <span class="action-bar-title">UCF AI Presentation</span>
+  <div class="action-bar-btns">
+    <a class="btn" href="UCF_AI_Presentation.pdf" target="_blank" rel="noopener">↗ Open in New Tab</a>
+    <a class="btn" href="UCF_AI_Presentation.pdf" download>⬇ Download PDF</a>
   </div>
 </div>
 
 <div class="pdf-wrap">
-  <embed class="pdf-embed" src="UCF_AI_Presentation_Revised.pdf" type="application/pdf">
+  <embed class="pdf-embed" src="UCF_AI_Presentation.pdf" type="application/pdf">
 </div>
 
 <div class="foot">
@@ -168,5 +259,17 @@
   <a href="index.html">← Home</a>
 </div>
 
+<script>
+  const btn = document.getElementById('theme-btn');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved) { root.setAttribute('data-theme', saved); btn.textContent = saved === 'dark' ? 'light' : 'dark'; }
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.textContent = next === 'dark' ? 'light' : 'dark';
+  });
+</script>
 </body>
 </html>
